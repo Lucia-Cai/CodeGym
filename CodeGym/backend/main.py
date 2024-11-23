@@ -41,7 +41,7 @@ app.add_middleware(
 @app.get("/workoutplans", response_model=List[WorkoutPlan])
 def get_workout_plans():
     workouts_list = codegym_db.get_workout_plans()
-    workouts = List()
+    workouts = []
     for workout in workouts_list:
         workouts.append(
             WorkoutPlan(
@@ -68,7 +68,7 @@ def add_workout_plan(workout_plan: WorkoutPlan):
 @app.get("workoutplan/{workout_id}/exercises", response_model=List[Exercise])
 def get_exercises(workout_id: int):
     exercises_list = codegym_db.get_exercises(workout_id) # TODO: get the exercise for an actual plan when lucia changes it
-    exercises = List()
+    exercises = []
     for exercise in exercises_list:
         exercises.append(
             Exercise(
@@ -104,7 +104,7 @@ def add_workout_session(session: WorkoutSession):
 @app.get("/sessions/{exercise_ID}", response_model=List[WorkoutSession])
 def get_workout_sessions_for_exercise(exercise_ID: int):
     sessions_list = codegym_db.get_sessions(exercise_ID)
-    sessions = List()
+    sessions = []
     for session in sessions_list:
         sessions.append(
             WorkoutSession(
