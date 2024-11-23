@@ -83,13 +83,13 @@ def get_workout_plans():
 # # Initialize the database
 # init_db()
 
-add_workout_plan("2024-11-01", "2024-11-30", "TESTTTT")
+# add_workout_plan("2024-11-01", "2024-11-30", "TESTTTT")
 
 # Add a workout
-add_exercise(1,"Push Ups", 15)  # Example: Push-ups with no weight
-add_exercise(2,"abs", 30)
+add_exercise(5,"Push Ups", 15)  # Example: Push-ups with no weight
+add_exercise(6,"abs", 30)
 
 # Retrieve workouts
-exercises = get_exercises(1)
+exercises = get_exercises(5)
 for exercise in exercises:
     print(exercise)

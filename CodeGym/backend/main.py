@@ -66,7 +66,7 @@ def add_workout_plan(workout_plan: WorkoutPlan):
 
 # endpoints for exercises
 
-@app.get("workoutplans/{workout_id}/exercises", response_model=List[Exercise])
+@app.get("/workoutplans/{workout_id}/exercises", response_model=List[Exercise])
 def get_exercises(workout_id: int):
     exercises_list = codegym_db.get_exercises(workout_id) # TODO: get the exercise for an actual plan when lucia changes it
     exercises = []
