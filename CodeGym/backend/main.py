@@ -47,14 +47,14 @@ def get_workout_plans():
             WorkoutPlan(
                 end_date=workout.get("end_date"),
                 start_date=workout.get("start_date"),
-                name=workout.get("name"),
-                workout_ID=workout.get("workout_ID")
+                name=workout.get("workout_plan_name"),
+                workout_ID=workout.get("workout_id")
             )
         )
     return workouts_list
 
 @app.post("/workoutplans", response_model=WorkoutPlan)
-def add_exercise(workout_plan: WorkoutPlan):
+def add_workout_plan(workout_plan: WorkoutPlan):
     codegym_db.add_workout_plan(
         name=workout_plan.name,
         start_date=workout_plan.start_date,
@@ -72,7 +72,8 @@ def get_exercises(workout_ID: int):
     for exercise in exercises_list:
         exercises.append(
             Exercise(
-                name=exercise.get("name"),
+                exercise_id=exercise.get("exercise_id"),
+                name=exercise.get("exercise_name"),
                 reps=exercise.get("reps"),
                 workout_ID=workout_ID
             )
@@ -107,9 +108,10 @@ def get_workout_sessions_for_exercise(exercise_ID: int):
     for session in sessions_list:
         sessions.append(
             WorkoutSession(
-                exercise_ID=session.get("exercise_ID"),
-                session_ID=session.get("session_ID"),
-                weight=session.get("weight")
+                exercise_ID=session.get("exercise_id"),
+                session_ID=session.get("session_id"),
+                weight=session.get("weight"),
+                date=session.get("session_date")
             )
         )
     return sessions
