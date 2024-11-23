@@ -22,10 +22,6 @@ class WorkoutSession(BaseModel):
     exercise_ID: int
     weight: float
 
-class WorkoutSessions(BaseException):
-    exercise_ID: int
-    sessions: List[WorkoutSession]
-
 app = FastAPI()
 
 origins = [ # what we want to be able to access the API
@@ -43,9 +39,39 @@ app.add_middleware(
 
 codegym_db.init_db() # initializing the database
 
-@app.get("/exercises/{workout_ID}", response_model=Exercise) # to get am exercise
-def get_exercise(workout_ID: int):
-    exercises_list = codegym_db.get_exercises() # get the exercise for an actual plan when lucia changes it
+
+# endpoint workout plans
+
+@app.get("/workoutplans", response_model=List[WorkoutPlan])
+def get_workout_plans():
+    workouts_list = codegym_db.get_workout_plans() # TODO: replace with actual method name
+    workouts = List()
+    for workout in workouts_list:
+        workouts.append(
+            WorkoutPlan(
+                end_date=workout.get("end_date"),
+                start_date=workout.get("start_date"),
+                name=workout.get("name"),
+                workout_ID=workout.get("workout_ID")
+            )
+        )
+    return workouts_list
+
+@app.post("/workoutplans", response_model=WorkoutPlan)
+def add_exercise(workout_plan: WorkoutPlan):
+    codegym_db.add_workout_plan(
+        workout_plan.name,
+        workout_plan.start_date,
+        workout_plan.end_date
+    ) # TODO: fix this whith actual method from Lucia
+    return workout_plan
+
+
+# endpoints for exercises
+
+@app.get("workoutplan/{workout_ID}/exercises", response_model=List[Exercise])
+def get_exercises(workout_ID: int):
+    exercises_list = codegym_db.get_exercises(workout_ID) # TODO: get the exercise for an actual plan when lucia changes it
     exercises = List()
     for exercise in exercises_list:
         exercises.append(
@@ -57,15 +83,37 @@ def get_exercise(workout_ID: int):
         )
     return exercises
 
-@app.post("/exercise", response_model=Exercise)
+@app.post("/exercises", response_model=Exercise)
 def add_exercise(exercise: Exercise):
-    codegym_db.add_exercise(exercise.name, exercise.reps, 0) # take out weight and put workoput id after lucia changes it 
+    codegym_db.add_exercise(exercise.name, exercise.reps, 0) # TODO: take out weight and put workoput id after lucia changes it 
     return exercise
 
+
+# endpoints for sessions
+
 @app.post("/session", response_model=WorkoutSession)
-def add_exercise(session: WorkoutSession):
-    # codegym_db.add_session() add this
+def add_workout_session(session: WorkoutSession):
+    codegym_db.add_session(
+        session.exercise_ID,
+        session.weight
+    ) # TODO: replace with actual method
     return session
+
+@app.get("/sessions/{exercise_ID}", response_model=List[WorkoutSession])
+def get_workout_sessions_for_exercise(exercise_ID: int):
+    sessions_list = codegym_db.get_workout_sessions(exercise_ID) # TODO: replace with actual method name
+    sessions = List()
+    for session in sessions_list:
+        sessions.append(
+            WorkoutSession(
+                exercise_ID=session.get("exercise_ID"),
+                session_ID=session.get("session_ID"),
+                weight=session.get("weight")
+            )
+        )
+    return sessions
+
+
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8000)
