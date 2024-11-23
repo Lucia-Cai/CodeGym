@@ -1,0 +1,18 @@
+namespace models;
+
+class User {
+  unique username;
+  password;
+  1<@>-* WorkoutPlan;
+}
+
+class Exercise {
+  name;
+  Integer reps;
+}
+
+class WorkoutPlan {
+  autounique id;
+  1<@>-* Exercise exercises;
+  Date endDate;
+}
