@@ -1,11 +1,11 @@
 /*PLEASE DO NOT EDIT THIS CODE*/
 /*This code was generated using the UMPLE 1.35.0.7523.c616a4dce modeling language!*/
 
-package models;
+package org.codegym.model;
 import java.sql.Date;
 import java.util.*;
 
-// line 14 "../CodeGym.ump"
+// line 14 "../../../CodeGym.ump"
 public class WorkoutPlan
 {
 

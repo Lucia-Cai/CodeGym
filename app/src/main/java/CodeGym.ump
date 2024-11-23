@@ -1,4 +1,4 @@
-namespace models;
+namespace org.codegym.model;
 
 class User {
   unique username;

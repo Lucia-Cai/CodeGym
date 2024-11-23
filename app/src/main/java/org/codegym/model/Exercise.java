@@ -1,9 +1,9 @@
 /*PLEASE DO NOT EDIT THIS CODE*/
 /*This code was generated using the UMPLE 1.35.0.7523.c616a4dce modeling language!*/
 
-package models;
+package org.codegym.model;
 
-// line 9 "../CodeGym.ump"
+// line 9 "../../../CodeGym.ump"
 public class Exercise
 {
 
