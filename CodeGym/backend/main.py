@@ -9,7 +9,7 @@ import codegym_db
 class Exercise(BaseModel):
     name: str
     reps: int 
-    exercise_ID: int
+    workout_ID: int
 
 class WorkoutPlan(BaseModel):
     workout_ID: int
@@ -18,9 +18,9 @@ class WorkoutPlan(BaseModel):
     end_date: Date
 
 class WorkoutSession(BaseModel):
-    session_ID: int
     exercise_ID: int
     weight: float
+    date: Date
 
 app = FastAPI()
 
@@ -36,15 +36,11 @@ app.add_middleware(
     allow_headers=['*'],
 )
 
-
-codegym_db.init_db() # initializing the database
-
-
 # endpoint workout plans
 
 @app.get("/workoutplans", response_model=List[WorkoutPlan])
 def get_workout_plans():
-    workouts_list = codegym_db.get_workout_plans() # TODO: replace with actual method name
+    workouts_list = codegym_db.get_workout_plans()
     workouts = List()
     for workout in workouts_list:
         workouts.append(
@@ -60,10 +56,10 @@ def get_workout_plans():
 @app.post("/workoutplans", response_model=WorkoutPlan)
 def add_exercise(workout_plan: WorkoutPlan):
     codegym_db.add_workout_plan(
-        workout_plan.name,
-        workout_plan.start_date,
-        workout_plan.end_date
-    ) # TODO: fix this whith actual method from Lucia
+        name=workout_plan.name,
+        start_date=workout_plan.start_date,
+        end_date=workout_plan.end_date
+    )
     return workout_plan
 
 
@@ -78,14 +74,18 @@ def get_exercises(workout_ID: int):
             Exercise(
                 name=exercise.get("name"),
                 reps=exercise.get("reps"),
-                exercise_ID=exercise.get("exercise_ID")
+                workout_ID=workout_ID
             )
         )
     return exercises
 
 @app.post("/exercises", response_model=Exercise)
 def add_exercise(exercise: Exercise):
-    codegym_db.add_exercise(exercise.name, exercise.reps, 0) # TODO: take out weight and put workoput id after lucia changes it 
+    codegym_db.add_exercise(
+        exercise_name=exercise.name,
+        reps=exercise.reps,
+        workout_id=exercise.workout_ID
+    )
     return exercise
 
 
@@ -94,14 +94,15 @@ def add_exercise(exercise: Exercise):
 @app.post("/session", response_model=WorkoutSession)
 def add_workout_session(session: WorkoutSession):
     codegym_db.add_session(
-        session.exercise_ID,
-        session.weight
-    ) # TODO: replace with actual method
+        exercise_id=session.exercise_ID,
+        weight=session.weight,
+        date=session.date
+    )
     return session
 
 @app.get("/sessions/{exercise_ID}", response_model=List[WorkoutSession])
 def get_workout_sessions_for_exercise(exercise_ID: int):
-    sessions_list = codegym_db.get_workout_sessions(exercise_ID) # TODO: replace with actual method name
+    sessions_list = codegym_db.get_sessions(exercise_ID)
     sessions = List()
     for session in sessions_list:
         sessions.append(
