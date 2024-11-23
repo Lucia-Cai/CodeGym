@@ -39,7 +39,7 @@ app.add_middleware(
 # endpoint workout plans
 
 @app.get("/workoutplans", response_model=List[WorkoutPlan])
-def get_workout_plans():
+def get_workout_plans(): # works
     workouts_list = codegym_db.get_workout_plans()
     workouts = []
     for workout in workouts_list:
