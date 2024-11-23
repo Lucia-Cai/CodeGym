@@ -81,7 +81,7 @@ def get_workout_plans():
 # # Initialize the database
 # init_db()
 
-add_workout_plan("2024-11-01", "2024-11-30")
+add_workout_plan("2024-11-01", "2024-11-30", "TESTTTT")
 
 # Add a workout
 add_exercise(1,"Push Ups", 15)  # Example: Push-ups with no weight
