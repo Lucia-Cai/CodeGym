@@ -1,0 +1,13 @@
+GET http://localhost:8000/workoutplans
+Accept: application/json
+
+POST http://localhost:8000/workoutplans
+Content-Type: application/json
+{
+    "name": "leg day",
+    "start_date": "2024-11-23",
+    "end_date": "2025-02-14"
+}
+
+GET http://localhost:8000/workoutplans
+Accept: application/json

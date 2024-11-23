@@ -36,7 +36,7 @@ def db_connect():
 #     conn.close()
 
 
-def add_workout_plan(start_date: str, end_date: str, name):
+def add_workout_plan(start_date: str, end_date: str, name: str):
     conn = db_connect()
     conn.execute('''INSERT INTO workout_plan (start_date, end_date, workout_plan_name) VALUES (?, ?, ?)''', (start_date, end_date, name))
     conn.commit()
