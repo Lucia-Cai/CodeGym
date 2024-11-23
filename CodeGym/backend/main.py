@@ -10,6 +10,7 @@ class Exercise(BaseModel):
     name: str
     reps: int 
     workout_id: int
+    exercise_id: int
 
 class WorkoutPlan(BaseModel):
     workout_id: int
@@ -65,7 +66,7 @@ def add_workout_plan(workout_plan: WorkoutPlan):
 
 # endpoints for exercises
 
-@app.get("workoutplan/{workout_id}/exercises", response_model=List[Exercise])
+@app.get("workoutplans/{workout_id}/exercises", response_model=List[Exercise])
 def get_exercises(workout_id: int):
     exercises_list = codegym_db.get_exercises(workout_id) # TODO: get the exercise for an actual plan when lucia changes it
     exercises = []
@@ -92,7 +93,7 @@ def add_exercise(exercise: Exercise):
 
 # endpoints for sessions
 
-@app.post("/session", response_model=WorkoutSession)
+@app.post("/sessions", response_model=WorkoutSession)
 def add_workout_session(session: WorkoutSession):
     codegym_db.add_session(
         exercise_id=session.exercise_id,
@@ -101,7 +102,7 @@ def add_workout_session(session: WorkoutSession):
     )
     return session
 
-@app.get("/sessions/{exercise_ID}", response_model=List[WorkoutSession])
+@app.get("exercises/{exercise_ID}/sessions", response_model=List[WorkoutSession])
 def get_workout_sessions_for_exercise(exercise_ID: int):
     sessions_list = codegym_db.get_sessions(exercise_ID)
     sessions = []

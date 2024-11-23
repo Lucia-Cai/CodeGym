@@ -61,6 +61,8 @@ def get_exercises(workout_id: int):
     cursor = conn.execute('''SELECT * FROM exercises WHERE workout_id=?''', (workout_id,))
     exercises = cursor.fetchall()
     conn.close()
+    if (len(exercises) == 0):
+        return []
     return[dict(row) for row in exercises]
 
 def get_sessions(exercise_id: int):
