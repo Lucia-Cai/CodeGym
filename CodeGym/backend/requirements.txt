@@ -1,0 +1,4 @@
+fasapi
+sqlite3
+uvicorn
+pydantic
