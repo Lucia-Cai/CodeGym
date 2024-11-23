@@ -1,7 +1,7 @@
 import sqlite3
 
 def db_connect():
-    conn = sqlite3.connect("codegym_db.db")
+    conn = sqlite3.connect("codegym_DB.db")
     conn.row_factory = sqlite3.Row
     return conn
 
@@ -44,7 +44,7 @@ def add_workout_plan(start_date: str, end_date: str, name: str):
 
 def add_exercise(workout_id: int, exercise_name: str, reps: int):
     conn = db_connect()
-    conn.execute('''INSERT INTO exercises (exercise_name, reps, exercise_id) VALUES (?, ?, ?);''', (exercise_name, reps, workout_id))
+    conn.execute('''INSERT INTO exercises (exercise_name, reps, workout_id) VALUES (?, ?, ?);''', (exercise_name, reps, workout_id))
     conn.commit()
     conn.close()
 
