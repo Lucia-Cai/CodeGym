@@ -9,18 +9,18 @@ import codegym_db
 class Exercise(BaseModel):
     name: str
     reps: int 
-    workout_ID: int
+    workout_id: int
 
 class WorkoutPlan(BaseModel):
-    workout_ID: int
-    name: str
+    workout_id: int
+    workout_plan_name: str
     start_date: Date
     end_date: Date
 
 class WorkoutSession(BaseModel):
-    exercise_ID: int
+    exercise_id: int
     weight: float
-    date: Date
+    session_date: Date
 
 app = FastAPI()
 
@@ -47,8 +47,8 @@ def get_workout_plans():
             WorkoutPlan(
                 end_date=workout.get("end_date"),
                 start_date=workout.get("start_date"),
-                name=workout.get("workout_plan_name"),
-                workout_ID=workout.get("workout_id")
+                workout_plan_name=workout.get("workout_plan_name"),
+                workout_id=workout.get("workout_id")
             )
         )
     return workouts_list
@@ -56,7 +56,7 @@ def get_workout_plans():
 @app.post("/workoutplans", response_model=WorkoutPlan)
 def add_workout_plan(workout_plan: WorkoutPlan):
     codegym_db.add_workout_plan(
-        name=workout_plan.name,
+        name=workout_plan.workout_plan_name,
         start_date=workout_plan.start_date,
         end_date=workout_plan.end_date
     )
@@ -65,9 +65,9 @@ def add_workout_plan(workout_plan: WorkoutPlan):
 
 # endpoints for exercises
 
-@app.get("workoutplan/{workout_ID}/exercises", response_model=List[Exercise])
-def get_exercises(workout_ID: int):
-    exercises_list = codegym_db.get_exercises(workout_ID) # TODO: get the exercise for an actual plan when lucia changes it
+@app.get("workoutplan/{workout_id}/exercises", response_model=List[Exercise])
+def get_exercises(workout_id: int):
+    exercises_list = codegym_db.get_exercises(workout_id) # TODO: get the exercise for an actual plan when lucia changes it
     exercises = List()
     for exercise in exercises_list:
         exercises.append(
@@ -75,7 +75,7 @@ def get_exercises(workout_ID: int):
                 exercise_id=exercise.get("exercise_id"),
                 name=exercise.get("exercise_name"),
                 reps=exercise.get("reps"),
-                workout_ID=workout_ID
+                workout_id=workout_id
             )
         )
     return exercises
@@ -85,7 +85,7 @@ def add_exercise(exercise: Exercise):
     codegym_db.add_exercise(
         exercise_name=exercise.name,
         reps=exercise.reps,
-        workout_id=exercise.workout_ID
+        workout_id=exercise.workout_id
     )
     return exercise
 
@@ -95,7 +95,7 @@ def add_exercise(exercise: Exercise):
 @app.post("/session", response_model=WorkoutSession)
 def add_workout_session(session: WorkoutSession):
     codegym_db.add_session(
-        exercise_id=session.exercise_ID,
+        exercise_id=session.exercise_id,
         weight=session.weight,
         date=session.date
     )
@@ -108,10 +108,10 @@ def get_workout_sessions_for_exercise(exercise_ID: int):
     for session in sessions_list:
         sessions.append(
             WorkoutSession(
-                exercise_ID=session.get("exercise_id"),
-                session_ID=session.get("session_id"),
+                exercise_id=session.get("exercise_id"),
+                session_id=session.get("session_id"),
                 weight=session.get("weight"),
-                date=session.get("session_date")
+                session_date=session.get("session_date")
             )
         )
     return sessions
