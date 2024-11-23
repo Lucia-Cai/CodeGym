@@ -1,4 +1,4 @@
-package main.java.codejam14.codegym;
+package org.codegym;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
