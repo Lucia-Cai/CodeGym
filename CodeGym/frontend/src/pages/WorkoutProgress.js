@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import '../styles/WorkoutProgress.css';
 import {useGetExercises} from "../axios.js";
-import MenuItem from '../components/MenuItem';
+import ExerciseItem from '../components/ExerciseItem';
 
 function WorkoutProgress() {
   const navigate = useNavigate();
@@ -22,7 +22,7 @@ function WorkoutProgress() {
       <div>
       <div>
             {exercises.map((exercise)=>(
-                <MenuItem 
+                <ExerciseItem 
                 name = {exercise.name} 
                 description ={`reps: ${exercise.reps}`}/>
             ))}
