@@ -33,7 +33,7 @@ export const useWorkoutPlans = () => {
 export const addWorkoutPlan = async (workoutPlan) => {
   try {
     const response = await axiosInstance.post("http://localhost:8000/workoutplans", workoutPlan);
-    return response.data.workout_id;
+    return response.data;
   } catch (error) {
     console.error("Error adding workout plan:", error);
     throw error;
@@ -69,7 +69,11 @@ export const useGetExercises = (workout_id) => {
 // Add a new exercise
 export const addExercise = async (exercise) => {
   try {
-    const response = await axiosInstance.post("http://localhost:8000/exercises", exercise);
+    const response = await axiosInstance.post("http://localhost:8000/exercises", 
+      exercise,
+      {
+        headers: { 'Content-Type': 'application/json' }
+      });
     return response.data;
   } catch (error) {
     console.error("Error adding exercise:", error);
