@@ -33,7 +33,7 @@ export const useWorkoutPlans = () => {
 // Add a new workout plan
 export const addWorkoutPlan = async (workoutPlan) => {
   try {
-    const response = await axiosInstance.post("/workoutplans", workoutPlan);
+    const response = await axiosInstance.post("http://localhost:8000/workoutplans", workoutPlan);
     return response.data;
   } catch (error) {
     console.error("Error adding workout plan:", error);
@@ -70,7 +70,7 @@ export const useGetExercises = (workout_id) => {
 // Add a new exercise
 export const addExercise = async (exercise) => {
   try {
-    const response = await axiosInstance.post("/exercises", exercise);
+    const response = await axiosInstance.post("http://localhost:8000/exercises", exercise);
     return response.data;
   } catch (error) {
     console.error("Error adding exercise:", error);
@@ -81,7 +81,7 @@ export const addExercise = async (exercise) => {
 // Add a new workout session
 export const addWorkoutSession = async (session) => {
   try {
-    const response = await axiosInstance.post("/sessions", session);
+    const response = await axiosInstance.post("http://localhost:8000/sessions", session);
     return response.data;
   } catch (error) {
     console.error("Error adding workout session:", error);
@@ -92,7 +92,7 @@ export const addWorkoutSession = async (session) => {
 // Fetch sessions for a specific exercise
 export const getWorkoutSessionsForExercise = async (exerciseId) => {
   try {
-    const response = await axiosInstance.get(`/exercises/${exerciseId}/sessions`);
+    const response = await axiosInstance.get(`http://localhost:8000/exercises/${exerciseId}/sessions`);
     return response.data;
   } catch (error) {
     console.error("Error fetching workout sessions:", error);
