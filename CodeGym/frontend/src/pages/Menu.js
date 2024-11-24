@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import '../styles/Menu.css';
 import getWorkoutPlans from "../axios.js";
 
-
 function Menu() {
   const navigate = useNavigate();
 
