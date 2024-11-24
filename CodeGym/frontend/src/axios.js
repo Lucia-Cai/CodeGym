@@ -3,7 +3,7 @@ import axiosInstance from "./axiosInstance.js";
 import axios from "axios";
 import WorkOut from "./assets/workout.png"; // Import your image or use a static URL
 
-const useWorkoutPlans = () => {
+export const useWorkoutPlans = () => {
     const [plans, setPlans] = useState([]);
   
     useEffect(() => {
@@ -56,15 +56,32 @@ export const addWorkoutPlan = async (workoutPlan) => {
 };
 
 // Fetch exercises for a specific workout plan
-export const getExercises = async (workoutId) => {
-  try {
-    const response = await axiosInstance.get(`/workoutplans/${workoutId}/exercises`);
-    return response.data;
-  } catch (error) {
-    console.error("Error fetching exercises:", error);
-    throw error;
-  }
-};
+
+
+// Fetch all exercises
+export const useGetExercises = (workout_id) => {
+    const [plans, setPlans] = useState([]);
+  
+    useEffect(() => {
+      const fetchExercises = async () => {
+        try {
+          const response = await axios.get(`http://localhost:8000//workoutplans/${workout_id}/exercises`);
+          const transformedExercises = response.data.map((exercise) => ({
+            name: exercise.name,
+            reps: exercise.reps,
+            exercise_id: exercise.exercise_id,
+            workout_id: exercise.workout_id
+          }));
+          setPlans(transformedExercises);
+        } catch (error) {
+          console.error("Error fetching workout plans:", error);
+        }
+      };
+      fetchExercises();
+    }, [workout_id]);
+  
+    return plans;
+  };
 
 // Add a new exercise
 export const addExercise = async (exercise) => {
@@ -99,4 +116,3 @@ export const getWorkoutSessionsForExercise = async (exerciseId) => {
   }
 };
 
-export default useWorkoutPlans;

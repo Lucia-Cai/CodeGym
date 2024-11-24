@@ -2,7 +2,7 @@ import React from 'react';
 import MenuItem from '../components/MenuItem';
 import { useNavigate } from "react-router-dom";
 import '../styles/Menu.css';
-import getWorkoutPlans from "../axios.js";
+import {useWorkoutPlans} from "../axios.js";
 
 function Menu() {
   const navigate = useNavigate();
@@ -15,7 +15,7 @@ function Menu() {
   const handleAddWorkoutClick = () => {
     navigate("/addworkout"); 
   };
-  const ServiceList = getWorkoutPlans();
+  const ServiceList = useWorkoutPlans();
   return (
     <div>
       <div className="menu">
