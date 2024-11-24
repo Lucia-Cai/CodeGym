@@ -1,7 +1,7 @@
 import sqlite3
 
 def db_connect():
-    conn = sqlite3.connect("./codegym_DB.db")
+    conn = sqlite3.connect("codegym_DB.db")
     conn.row_factory = sqlite3.Row
     return conn
 
