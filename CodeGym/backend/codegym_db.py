@@ -92,4 +92,6 @@ def get_workout_plans():
     cursor = conn.execute('''SELECT * FROM workout_plan''')
     exercises = cursor.fetchall()
     conn.close()
+    if (len(exercises) == 0):
+        return []
     return[dict(row) for row in exercises]
