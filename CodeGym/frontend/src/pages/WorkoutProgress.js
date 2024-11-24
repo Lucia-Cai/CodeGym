@@ -8,7 +8,8 @@ function WorkoutProgress() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const { workout_id } = location.state;
+const { workout_id } = location.state || {}; // Default to an empty object
+
 
   const exercises = useGetExercises(workout_id);
 
@@ -24,7 +25,10 @@ function WorkoutProgress() {
             {exercises.map((exercise)=>(
                 <ExerciseItem 
                 name = {exercise.name} 
-                description ={`reps: ${exercise.reps}`}/>
+                rep = {exercise.reps} 
+                cur_weight = {exercise.weight}
+                data = {exercise.data}
+                />
             ))}
         </div>
         <button className="workoutPlanButton" onClick={handleMenuItemClick}>

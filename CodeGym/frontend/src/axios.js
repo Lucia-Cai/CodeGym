@@ -43,33 +43,6 @@ export const addWorkoutPlan = async (workoutPlan) => {
 
 
 // Fetch all exercises
-const useGetExercises = (workout_id) => {
-    const [plans, setPlans] = useState([]);
-  
-    useEffect(() => {
-      const fetchExercises = async () => {
-        try {
-          const response = await axios.get(`http://localhost:8000//workoutplans/${workout_id}/exercises`);
-          const transformedExercises = response.data.map((exercise) => ({
-            name: exercise.name,
-            reps: exercise.reps,
-            exercise_id: exercise.exercise_id,
-            workout_id: exercise.workout_id
-          }));
-          setPlans(transformedExercises);
-        } catch (error) {
-          console.error("Error fetching workout plans:", error);
-        }
-      };
-      fetchExercises();
-    }, [workout_id]);
-  
-    return plans;
-  };
-// Fetch exercises for a specific workout plan
-
-
-// Fetch all exercises
 export const useGetExercises = (workout_id) => {
     const [plans, setPlans] = useState([]);
   
