@@ -3,6 +3,7 @@ import axiosInstance from "./axiosInstance.js";
 import axios from "axios";
 import WorkOut from "./assets/workout.png"; // Import your image or use a static URL
 
+
 export const useWorkoutPlans = () => {
     const [plans, setPlans] = useState([]);
   
@@ -15,6 +16,7 @@ export const useWorkoutPlans = () => {
             workout_id: plan.workout_id,
             image: WorkOut,  // or use an actual URL
             description: `Workout plan from ${plan.start_date} to ${plan.end_date}`,
+            workout_id: plan.workout_id
           }));
           setPlans(transformedPlans);
         } catch (error) {
@@ -28,23 +30,6 @@ export const useWorkoutPlans = () => {
     return plans;
   };
 
-
-
-// Fetch all workout plans
-// export const getWorkoutPlans = async () => {
-//   try {
-//     const response = await axiosInstance.get("/workoutplans");
-//     const processedData = response.data.map((item) => ({
-//         name: item.workout_plan_name.toUpperCase(), // Example processing: convert name to uppercase
-//         description: item.start_date
-//     }));
-//     return processedData.data;
-//   } catch (error) {
-//     console.error("Error fetching workout plans:", error);
-//     throw error;
-//   }
-// };
-
 // Add a new workout plan
 export const addWorkoutPlan = async (workoutPlan) => {
   try {
@@ -55,8 +40,6 @@ export const addWorkoutPlan = async (workoutPlan) => {
     throw error;
   }
 };
-
-// Fetch exercises for a specific workout plan
 
 
 // Fetch all exercises
