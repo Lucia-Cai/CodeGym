@@ -14,13 +14,20 @@ function ExerciseItem({id, name, rep, cur_weight, data}) {
         {/* <p>Current Weight: {cur_weight}</p> */}
     </div>
     <div>
-        <LineChart width={300} height={300} data={data} margin={{top:5, right:20, bottom:5, left:0 }}>
+      {data && data.length > 0 && (
+          <LineChart 
+            width={300} 
+            height={300} 
+            data={data} 
+            margin={{ top: 5, right: 20, bottom: 5, left: 0 }}
+          >
             <Line type="monotone" dataKey="weight" stroke="#8884d8" />
             <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
             <XAxis dataKey="date" />
             <YAxis />
             <Tooltip />
-        </LineChart>
+          </LineChart>
+        )}
     </div>
     </div>
   )
