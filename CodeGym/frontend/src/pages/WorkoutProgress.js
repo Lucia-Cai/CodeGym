@@ -97,9 +97,9 @@ const handleMenuItemClick = () => {
 
   return (
     <div>
-      <div>
+      <div className = "workoutprogress">
+      <div className = "leftSide">
       <h1 className = "workoutTitle">{workout_name}</h1>
-      <div>
       <div className = "workoutList">
             {exercises.map((exercise)=>(
                 <ExerciseItem 
@@ -111,6 +111,8 @@ const handleMenuItemClick = () => {
                 />
             ))}
         </div>
+        </div>
+        <div className = "rightSide">
         <button className="workoutPlanButton1" onClick={handleMenuItemClick}>
           Go to Workout Plans
         </button>

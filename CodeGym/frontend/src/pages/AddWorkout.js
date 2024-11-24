@@ -26,9 +26,9 @@ function AddWorkout() {
     setExercises(newExercises);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const data = addWorkoutPlan(
+    const data = await addWorkoutPlan(
       {
         "workout_plan_name": workoutName,
         "start_date": "2000-01-01",
@@ -36,14 +36,13 @@ function AddWorkout() {
         "workout_id": 0
       }
     );
-    console.log(data);
     exercises.map((exercise) =>
         addExercise(
         {
-          "name": exercise.name,
-          "reps":exercise.reps,
-          "exercise_id": 0,
-          "workout_id": data,
+          name: exercise.name,
+          reps: exercise.reps,
+          workout_id: data.workout_id,
+          exercise_id: 0
         })
       );
     // Handle form submission (e.g., sending the workout data to an API or storing it)

@@ -4,16 +4,37 @@
     background-color: #f4f4f4;
     margin: 0;
     padding: 0;
+    width: 100%;
+    height: 90vh;
+    display: flex;
   }
   
-  .workoutprogress h1 {
+  .workoutprogress .leftSide {
+    height: 100%;
+    flex: 80%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow-y: scroll;
+  }
+  
+  .workoutprogress .rightSide {
+    height: 100%;
+    flex: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  /*.workoutprogress h1 {
     font-size: 3rem;
     color: #333;
     margin-bottom: 20px;
     text-align: center;
-  }
+  }*/
 
-  .exercise-list {
+  .workoutList {
+    width: 70vw;
+    height: auto;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     place-items : center;
@@ -24,7 +45,7 @@
   }
   
   /* Styling for each exercise item */
-  .exercise-item {
+  .exercise {
     background-color: white;
     padding: 15px;
     border-radius: 8px;
@@ -42,7 +63,8 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    /*transition: background-color 0.3s ease;*/
+    background-color: black;
   }
   
   /* Button hover effect */
