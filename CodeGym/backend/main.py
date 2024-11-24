@@ -100,7 +100,7 @@ def add_workout_session(session: WorkoutSession):
     codegym_db.add_session(
         exercise_id=session.exercise_id,
         weight=session.weight,
-        date=session.date
+        date=session.session_date
     )
     return session
 
