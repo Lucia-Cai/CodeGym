@@ -52,7 +52,7 @@ function AddWorkout() {
       setWorkoutName('');
       setStartDate('');
       setEndDate('');
-      setExercises([{name:'', reps:''}]);
+      setExercises([{name:'', reps:0}]);
     // Handle form submission (e.g., sending the workout data to an API or storing it)
   };
 
