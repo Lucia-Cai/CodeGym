@@ -45,6 +45,8 @@ function AddWorkout() {
           exercise_id: 0
         })
       );
+      setWorkoutName('');
+      setExercises([{name:'', reps:''}]);
     // Handle form submission (e.g., sending the workout data to an API or storing it)
   };
 
