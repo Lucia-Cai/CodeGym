@@ -2,8 +2,8 @@
   width: 100%;
   height: auto;
   display: flex;
-   flex-direction:column; 
-   font-family: Arial, Helvetica, sans-serif; 
+  flex-direction: column; 
+  font-family: Arial, Helvetica, sans-serif; 
 }
 
 body{

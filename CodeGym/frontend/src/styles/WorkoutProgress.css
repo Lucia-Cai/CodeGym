@@ -7,13 +7,7 @@ body {
   }
   
   /* Style for the main container */
-  div {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-  }
+ 
   
   /* Styling for the title (h1) */
   h1 {
