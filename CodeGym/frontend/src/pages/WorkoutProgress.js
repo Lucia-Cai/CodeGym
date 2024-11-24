@@ -2,14 +2,14 @@ import React from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import '../styles/WorkoutProgress.css';
 import {useGetExercises} from "../axios.js";
-import MenuItem from '../components/MenuItem';
-import '../styles/WorkoutProgress.css';
+import ExerciseItem from '../components/ExerciseItem';
 
 function WorkoutProgress() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const { workout_name, workout_id } = location.state;
+const { workout_id } = location.state || {}; // Default to an empty object
+
 
   const exercises = useGetExercises(workout_id);
 
@@ -24,9 +24,12 @@ function WorkoutProgress() {
       <div>
       <div className = "workoutList">
             {exercises.map((exercise)=>(
-                <MenuItem 
+                <ExerciseItem 
                 name = {exercise.name} 
-                description ={`reps: ${exercise.reps}`}/>
+                rep = {exercise.reps} 
+                cur_weight = {exercise.weight}
+                data = {exercise.data}
+                />
             ))}
         </div>
         <button className="workoutPlanButton1" onClick={handleMenuItemClick}>

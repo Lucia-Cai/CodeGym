@@ -41,6 +41,7 @@ export const addWorkoutPlan = async (workoutPlan) => {
   }
 };
 
+
 // Fetch all exercises
 export const useGetExercises = (workout_id) => {
     const [plans, setPlans] = useState([]);
