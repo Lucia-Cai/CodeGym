@@ -1,0 +1,31 @@
+/* General styling for the page */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Styling for the title (h1) */
+  h1 {
+    font-size: 3rem;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  /* Styling for the button */
+  .workoutPlanButton {
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Button hover effect */
+  .workoutPlanButton:hover {
+    background-color: #0056b3;
+  }
+  
