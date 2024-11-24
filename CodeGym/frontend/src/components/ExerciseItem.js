@@ -53,7 +53,7 @@ function ExerciseItem({ id, name, rep, cur_weight }) {
         // Sort the data by date (ascending order)
         formattedData.sort((a, b) => a.date - b.date);
 
-        setChartData(formattedData);
+        setChartData(formattedData);        
       } catch (error) {
         console.error("Error fetching workout session data:", error);
       }
