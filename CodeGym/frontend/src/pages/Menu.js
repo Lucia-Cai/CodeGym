@@ -4,8 +4,12 @@ import { useNavigate } from "react-router-dom";
 import '../styles/Menu.css';
 import getWorkoutPlans from "../axios.js";
 
+
 function Menu() {
   const navigate = useNavigate();
+
+  const handleMenuItemClick = (menuName) => {navigate(`/menu/${menuName}`);};
+
   const handleAddWorkoutClick = () => {
     navigate("/addworkout"); 
   };
@@ -16,14 +20,15 @@ function Menu() {
         <div className = "leftSide">
         <h1 className="serviceTitle">Our services</h1>
         <div className="serviceList">
-            {ServiceList.map((menuItem, key)=>{
-                return (
+            {ServiceList.map((menuItem, key)=>(
+                <button key={key} className = "workoutPlanButton" onClick={() => handleMenuItemClick(menuItem.name)}>
                 <MenuItem 
                 key = {key} 
                 image={menuItem.image} 
                 name ={menuItem.name} 
                 description ={menuItem.description}/>
-            )})}
+                </button> 
+            ))}
         </div>
         </div>
       <div className = "rightSide">

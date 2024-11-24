@@ -6,6 +6,7 @@ import Menu from './pages/Menu';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import AddWorkout from './pages/AddWorkout';
+import WorkoutPlans from './pages/WorkOutPlans';
 import {BrowserRouter as Router, Route, Routes} from  'react-router-dom';
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
           <Route  path= "/about" exact element={<About/>}/>
           <Route  path= "/contact" exact element={<Contact/>}/>
           <Route path="/addworkout" element={<AddWorkout />} />
+          <Route path="/workoutplans" element={<WorkoutPlans/>}/>
         </Routes>
         <Footer />
       </Router>
