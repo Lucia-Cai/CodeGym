@@ -1,20 +1,18 @@
 import React, { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import '../styles/WorkOutPlans.css';
 
 function WorkOutPlans() {
+
+  const location = useLocation();
+
   // Predefined list of exercises (autopopulated from another form in a real use case)
-  const predefinedExercises = [
-    'Bench Press',
-    'Squats',
-    'Deadlift',
-    'Pull-ups',
-    'Shoulder Press',
-  ];
+  const predefinedExercises = location.state?.exercise_list || []; // Default to an empty object
 
   // State to manage the form inputs
   const [formData, setFormData] = useState(
     predefinedExercises.map((exercise) => ({
-      name: exercise,
+      name: exercise.name,
       reps: '',
       weight: '',
     }))

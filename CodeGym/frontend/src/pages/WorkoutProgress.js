@@ -38,9 +38,13 @@ useEffect(() => {
 
 
 
-  
+
 const handleMenuItemClick = () => {
-  navigate("/workoutplans");
+  const exercise_list = exercises.map((exercise) => ({
+    "name": exercise.name,
+    "exercise_id": exercise.exercise_id
+  }));
+  navigate("/workoutplans", { state: { exercise_list } });
 };
 
   return (
