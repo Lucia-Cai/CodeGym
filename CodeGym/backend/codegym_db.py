@@ -81,17 +81,19 @@ def get_exercises(workout_id: int):
 
 def get_sessions(exercise_id: int):
     conn = db_connect()
-    cursor = conn.execute('''SELECT * FROM workout_sessions WHERE exercise_id=?''', (exercise_id,))
-    exercises = cursor.fetchall()
+    cursor = conn.execute('''SELECT * FROM workout_session WHERE exercise_id=?''', (exercise_id,))
+    sessions = cursor.fetchall()
     conn.close()
-    return[dict(row) for row in exercises]
+    if (len(sessions) == 0):
+        return []
+    return[dict(row) for row in sessions]
 
 
 def get_workout_plans():
     conn = db_connect()
     cursor = conn.execute('''SELECT * FROM workout_plan''')
-    exercises = cursor.fetchall()
+    plans = cursor.fetchall()
     conn.close()
-    if (len(exercises) == 0):
+    if (len(plans) == 0):
         return []
-    return[dict(row) for row in exercises]
+    return[dict(row) for row in plans]
