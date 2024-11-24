@@ -8,7 +8,7 @@ function WorkoutProgress() {
   const navigate = useNavigate();
   const location = useLocation();
 
-const { workout_id } = location.state || {}; // Default to an empty object
+const { workout_name, workout_id } = location.state || {}; // Default to an empty object
 
 
   const exercises = useGetExercises(workout_id);
