@@ -36,14 +36,14 @@ function AddWorkout() {
         "workout_id": 0
       }
     );
-    console.error(data);
+    console.log(data);
     exercises.map((exercise) =>
         addExercise(
         {
           "name": exercise.name,
-          "reps": parseInt(exercise.reps,10),
-          "workout_id": parseInt(data.workout_id,10),
-          "exercise_id": 0
+          "reps":exercise.reps,
+          "exercise_id": 0,
+          "workout_id": data,
         })
       );
     // Handle form submission (e.g., sending the workout data to an API or storing it)

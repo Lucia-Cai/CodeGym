@@ -80,7 +80,7 @@ const { workout_name, workout_id } = location.state || {}; // Default to an empt
 
 
                 <ExerciseItem 
-                id = {exercise.id}
+                id = {exercise.exercise_id}
                 name = {exercise.name} 
                 rep = {exercise.reps} 
                 //cur_weight = {exercise.weight}
