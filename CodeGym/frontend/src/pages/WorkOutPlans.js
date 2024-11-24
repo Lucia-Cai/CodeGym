@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import '../styles/WorkOutPlans.css';
+import { addWorkoutSession } from "../axios.js";
 
 function WorkOutPlans() {
 
@@ -13,7 +14,8 @@ function WorkOutPlans() {
   const [formData, setFormData] = useState(
     predefinedExercises.map((exercise) => ({
       name: exercise.name,
-      reps: '',
+      exercise_id: exercise.exercise_id,
+      session_date: "2000-01-01", //TODO: change this to actual data
       weight: '',
     }))
   );
@@ -29,6 +31,14 @@ function WorkOutPlans() {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('Session Data:', formData);
+    formData.forEach(exercise => {
+      addWorkoutSession({
+        "exercise_id": exercise.exercise_id,
+        "weight": exercise.weight,
+        "session_date": exercise.session_date
+      });
+      
+    });
     alert('Workout session added successfully!');
     // You can send this data to the backend or perform other actions here.
   };

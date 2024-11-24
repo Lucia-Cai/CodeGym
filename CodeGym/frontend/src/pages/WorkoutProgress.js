@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import '../styles/WorkoutProgress.css';
-import {useGetExercises, useWorkoutSessions, getWorkoutSessionsForExercise} from "../axios.js";
+import {useGetExercises, getWorkoutSessionsForExercise} from "../axios.js";
 import ExerciseItem from '../components/ExerciseItem';
 
 
