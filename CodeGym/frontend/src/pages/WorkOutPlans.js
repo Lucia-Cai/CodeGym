@@ -43,15 +43,6 @@ function WorkOutPlans() {
           <div className="exercise-row" key={index}>
             <h3>{exercise.name}</h3>
             <label>
-              Reps:
-              <input
-                type="number"
-                value={exercise.reps}
-                onChange={(e) => handleInputChange(index, 'reps', e.target.value)}
-                required
-              />
-            </label>
-            <label>
               Weight (kg):
               <input
                 type="number"
