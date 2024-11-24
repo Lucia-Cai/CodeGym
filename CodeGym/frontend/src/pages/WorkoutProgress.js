@@ -49,8 +49,7 @@ const data = [
     amt: 2100,
   },
 ];
-
-var progress_data = []
+    
 
 
 
