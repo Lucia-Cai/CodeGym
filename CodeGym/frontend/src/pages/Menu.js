@@ -21,6 +21,9 @@ function Menu() {
       <div className="menu">
         <div className = "leftSide">
         <h1 className="serviceTitle">Our services</h1>
+        <form id = "addworkout1" onSubmit={(e) => e.preventDefault()}>
+            <button type="submit" onClick={handleAddWorkoutClick}> Add New Session! </button>
+        </form>
         <div className="serviceList">
             {ServiceList.map((menuItem, key)=>(
                 <button key={key} className = "workoutPlanButton" onClick={() => handleMenuTrackProgress(menuItem.name, menuItem.workout_id)}>
@@ -33,11 +36,6 @@ function Menu() {
             ))}
         </div>
         </div>
-      <div className = "rightSide">
-        <form id = "addworkout" onSubmit={(e) => e.preventDefault()}>
-            <button type="submit" onClick={handleAddWorkoutClick}> Add new Workout </button>
-        </form>
-      </div>
       </div>
     </div>
   )

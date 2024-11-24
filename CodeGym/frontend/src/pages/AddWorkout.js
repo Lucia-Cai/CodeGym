@@ -5,11 +5,15 @@ import {addExercise, addWorkoutPlan} from '../axios.js'
 
 function AddWorkout() {
   const [workoutName, setWorkoutName] = useState('');
+  const [startDate, setStartDate] = useState('');
+  const [endDate, setEndDate] = useState('');
   const [exercises, setExercises] = useState([{ name: '', reps: '' }]);
 
   const handleWorkoutNameChange = (e) => {
     setWorkoutName(e.target.value);
   };
+  const handleStartDateChange = (e) => setStartDate(e.target.value);
+  const handleEndDateChange = (e) => setEndDate(e.target.value);
 
   const handleExerciseChange = (index, e) => {
     const newExercises = [...exercises];
@@ -31,8 +35,8 @@ function AddWorkout() {
     const data = await addWorkoutPlan(
       {
         "workout_plan_name": workoutName,
-        "start_date": "2000-01-01",
-        "end_date": "2000-01-01",
+        "start_date": startDate,
+        "end_date": endDate,
         "workout_id": 0
       }
     );
@@ -46,6 +50,8 @@ function AddWorkout() {
         })
       );
       setWorkoutName('');
+      setStartDate('');
+      setEndDate('');
       setExercises([{name:'', reps:''}]);
     // Handle form submission (e.g., sending the workout data to an API or storing it)
   };
@@ -65,6 +71,29 @@ function AddWorkout() {
             onChange={handleWorkoutNameChange}
             required
           />
+          <div className="date-row">
+            <div>
+              <label htmlFor="start-date">Start Date</label>
+              <input
+                name="start-date"
+                type="date"
+                value={startDate}
+                onChange={handleStartDateChange}
+                required
+              />
+            </div>
+            <div>
+              <label htmlFor="end-date">End Date</label>
+              <input
+                name="end-date"
+                type="date"
+                value={endDate}
+                onChange={handleEndDateChange}
+                required
+              />
+            </div>
+          </div>
+
           
           <h3>Exercises</h3>
           {exercises.map((exercise, index) => (

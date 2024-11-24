@@ -171,6 +171,33 @@ form button {
   cursor: pointer;
 }
 
+.date-row {
+  display: flex;
+  justify-content: space-between; /* Align fields with space between */
+  gap: 10px; /* Add spacing between the fields */
+  width: 100%; /* Ensure full width of the form */
+}
+
+.date-row input {
+  width: 48%; /* Set width for both input fields */
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  color: black;
+}
+
+.date-row label {
+  display: block;
+  font-size: 16px;
+  margin-bottom: 5px;
+  color: grey;
+}
+
+.date-row div {
+  flex: 1; /* Ensure both fields share space equally */
+}
+
 .exercise-row {
   display: flex;
   justify-content: space-between; /* Space out the fields */

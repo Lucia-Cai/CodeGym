@@ -98,21 +98,25 @@
     margin-left: 20px;
   }
 
-  .addWorkoutButton {
+  #addworkout1 button {
     position: fixed;
-    right: 20px;
+    right: 50px;
     top: 100px;
-    background-color: #007bff;
+    background-color: black;
     color: white;
     border: none;
     border-radius: 5px;
     padding: 10px 20px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 20px;
     box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
+    width : 275px;
+    margin-top: 20px;
+  
 }
 
-.addWorkoutButton:hover {
+
+#addworkout1 button:hover {
     background-color: #0056b3;
 }
   
