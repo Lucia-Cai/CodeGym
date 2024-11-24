@@ -36,24 +36,37 @@ def db_connect():
 #     conn.close()
 
 
+
+
 def add_workout_plan(start_date: str, end_date: str, name: str):
     conn = db_connect()
-    conn.execute('''INSERT INTO workout_plan (start_date, end_date, workout_plan_name) VALUES (?, ?, ?)''', (start_date, end_date, name))
+    cursor = conn.cursor()
+    cursor.execute('''INSERT INTO workout_plan (start_date, end_date, workout_plan_name) VALUES (?, ?, ?)''', 
+                   (start_date, end_date, name))
     conn.commit()
+    workout_id = cursor.lastrowid  # Access the last inserted row's ID from the cursor
     conn.close()
+    return workout_id
+
 
 def add_exercise(workout_id: int, exercise_name: str, reps: int):
     conn = db_connect()
+    cursor = conn.cursor()
     conn.execute('''INSERT INTO exercises (exercise_name, reps, workout_id) VALUES (?, ?, ?);''', (exercise_name, reps, workout_id))
     conn.commit()
+    exercise_id = cursor.lastrowid
     conn.close()
+    return exercise_id
+
 
 def add_session(date: str, weight: int, exercise_id: int):
     conn = db_connect()
+    cursor = conn.cursor()
     conn.execute('''INSERT INTO workout_session (session_date, weight, exercise_id) VALUES (?, ?, ?);''', (date, weight, exercise_id))
     conn.commit()
+    session_id = cursor.lastrowid
     conn.close()
-
+    return session_id
 
 
 def get_exercises(workout_id: int):
@@ -65,6 +78,7 @@ def get_exercises(workout_id: int):
         return []
     return[dict(row) for row in exercises]
 
+
 def get_sessions(exercise_id: int):
     conn = db_connect()
     cursor = conn.execute('''SELECT * FROM workout_sessions WHERE exercise_id=?''', (exercise_id,))
@@ -72,24 +86,10 @@ def get_sessions(exercise_id: int):
     conn.close()
     return[dict(row) for row in exercises]
 
+
 def get_workout_plans():
     conn = db_connect()
     cursor = conn.execute('''SELECT * FROM workout_plan''')
     exercises = cursor.fetchall()
     conn.close()
     return[dict(row) for row in exercises]
-
-
-# # Initialize the database
-# init_db()
-
-# add_workout_plan("2024-11-01", "2024-11-30", "TESTTTT")
-
-# Add a workout
-add_exercise(5,"Push Ups", 15)  # Example: Push-ups with no weight
-add_exercise(6,"abs", 30)
-
-# Retrieve workouts
-exercises = get_exercises(5)
-for exercise in exercises:
-    print(exercise)
