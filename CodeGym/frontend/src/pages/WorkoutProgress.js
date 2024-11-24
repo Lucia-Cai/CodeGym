@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import '../styles/WorkoutProgress.css';
-import {useGetExercises} from "../axios.js";
+import {useGetExercises, useWorkoutSessions} from "../axios.js";
 import ExerciseItem from '../components/ExerciseItem';
 
 
@@ -76,11 +76,14 @@ const { workout_name, workout_id } = location.state || {}; // Default to an empt
       <div>
       <div className = "workoutList">
             {exercises.map((exercise)=>(
+
+
+
                 <ExerciseItem 
                 id = {exercise.id}
                 name = {exercise.name} 
                 rep = {exercise.reps} 
-                cur_weight = {exercise.weight}
+                //cur_weight = {exercise.weight}
                 data = {data}
                 />
             ))}

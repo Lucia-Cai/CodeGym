@@ -85,7 +85,7 @@ export const useWorkoutSessions = (exercise_id) => {
   useEffect(() => {
     const fetchSessions = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/exercises/${exercise_ID}/sessions`);
+        const response = await axios.get(`http://localhost:8000/exercises/${exercise_id}/sessions`);
         const transformedSessions = response.data.map((session) => ({
           date: session.session_date,
           weight: session.weight,
