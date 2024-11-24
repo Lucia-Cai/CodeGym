@@ -1,5 +1,5 @@
 /* Add Workout Page Styles */
-.add-workout-form {
+/*.add-workout-form {
     padding: 20px;
     margin: 20px auto;
     max-width: 500px;
@@ -68,10 +68,10 @@
     justify-content: space-between;
     align-items: center;
     margin-top: 20px;
-  }
+  }*/
   
   /* Optional: Add some basic page styling for the container */
-  .add-workout-page {
+  /*.add-workout-page {
     background-color: #fafafa;
     padding: 30px;
     min-height: 100vh;
@@ -85,5 +85,131 @@
     font-weight: bold;
     color: #333;
     margin-bottom: 20px;
-  }
-  
+  }*/
+
+ /* General Layout */
+ .addWorkout {
+  width: 100%;
+  height: 90vh;
+  display: flex;
+}
+
+.addWorkout .leftSide {
+  height: 100%;
+  flex: 50%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.addWorkout .rightSide {
+  height: 100%;
+  flex: 50%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  overflow-y: scroll;
+}
+
+.addWorkout .rightSide h1 {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  font-weight: 10;
+  font-size: 50px;
+  margin-left: 0;
+  justify-content : center;
+  align-items: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  height: auto;
+  padding: 30px;
+}
+
+form input {
+  height: 40px;
+  width: 80%;
+  border: none;
+  border-bottom: 1px solid #121619;
+  color: black;
+}
+
+form textarea {
+  margin-top: 15px;
+  height: 70px;
+  width: 80%;
+  border: none;
+  border-bottom: 1px solid #121619;
+  color: black;
+}
+input::placeholder,
+textarea::placeholder {
+  font-weight: bold;
+  color: black;
+  font-family: Arial, Helvetica, sans-serif;
+}
+form input:focus,
+textarea:focus {
+  outline: none;
+}
+
+form label {
+  margin-top: 15px;
+  color: grey;
+}
+
+form button {
+  width: 140px;
+  height: 40px;
+  border: none;
+  background-color: #121619;
+  color: whitesmoke;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.exercise-row {
+  display: flex;
+  justify-content: space-between; /* Space out the fields */
+  gap: 10px; /* Optional: controls spacing between fields */
+  width: 100%; /* Ensures the row takes the full width of the form */
+  align-items: center;
+}
+
+.exercise-row input {
+  width: 48%; /* Adjust width for exercise name and reps */
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
+.exercise-row button {
+  align-self: center;
+  background-color: black;
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  height: 40px; 
+  width: 100px;
+}
+
+.exercise-row button:hover {
+  background-color: black;
+}
+
+.remove-button {
+  margin-top: 0 !important; 
+  width: 140px;
+  height: 40px;
+  border: none;
+  background-color: #121619;
+  color: whitesmoke;
+  font-size: 15px;
+  cursor: pointer;
+}
