@@ -8,7 +8,9 @@ import getWorkoutPlans from "../axios.js";
 function Menu() {
   const navigate = useNavigate();
 
-  const handleMenuItemClick = (menuName) => {navigate(`/menu/${menuName}`);};
+  //const handleMenuItemClick = (menuName) => {navigate(`/menu/${menuName}`);};
+
+  const handleMenuTrackProgress = () => {navigate("/workoutprogress")};
 
   const handleAddWorkoutClick = () => {
     navigate("/addworkout"); 
@@ -21,7 +23,8 @@ function Menu() {
         <h1 className="serviceTitle">Our services</h1>
         <div className="serviceList">
             {ServiceList.map((menuItem, key)=>(
-                <button key={key} className = "workoutPlanButton" onClick={() => handleMenuItemClick(menuItem.name)}>
+                //<button key={key} className = "workoutPlanButton" onClick={() => handleMenuItemClick(menuItem.name)}>
+                <button key={key} className = "workoutPlanButton" onClick={handleMenuTrackProgress}>
                 <MenuItem 
                 key = {key} 
                 image={menuItem.image} 
