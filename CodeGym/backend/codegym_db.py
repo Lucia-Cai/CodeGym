@@ -50,7 +50,7 @@ def add_exercise(workout_id: int, exercise_name: str, reps: int):
 
 def add_session(date: str, weight: int, exercise_id: int):
     conn = db_connect()
-    conn.execute('''INSERT INTO workout_sessions (session_date, weight, workout_id) VALUES (?, ?, ?);''', (date, weight, exercise_id))
+    conn.execute('''INSERT INTO workout_session (session_date, weight, exercise_id) VALUES (?, ?, ?);''', (date, weight, exercise_id))
     conn.commit()
     conn.close()
 
