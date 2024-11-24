@@ -1,39 +1,7 @@
-/*import React from 'react'; 
-import ContactLeft from '../assets/about.png';
-import '../styles/Contact.css';
-
-function Contact() {
-  return (
-    <div className = "contact">
-      <div className = "leftSide" style={{ backgroundImage: `url(${ContactLeft})` }}></div>  
-      <div className = "rightSide">
-        <h1> Contact Us 
-            <form id = "contact-form" method="POST">
-                <label htmlFor="name" >Workout Name</label>
-                <input name="name" placeholder = "Enter full name..." type = "text" />
-                <label htmlFor="email">Email</label>
-                <input name="email" placeholder="Enter email..." type="email" />
-                <label htmlFor="message">Message</label>
-                <textarea
-                rows="6"
-                placeholder="Enter message..."
-                name="message"
-                required
-          ></textarea>
-          <button type="submit"> Send Message</button>
-
-            </form>
-        </h1>
-      </div>
-      
-    </div>
-  )
-}
-
-export default Contact*/ 
 import React, { useState } from 'react'; 
 import ContactLeft from '../assets/about.png';
 import '../styles/AddWorkout.css';
+import {addExercise, addWorkoutPlan} from '../axios.js'
 
 function AddWorkout() {
   const [workoutName, setWorkoutName] = useState('');
@@ -60,6 +28,22 @@ function AddWorkout() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const data = addWorkoutPlan(
+      {
+        "workout_plan_name": workoutName,
+        "start_date": "2000-01-01",
+        "end_date": "2000-01-01",
+        "workout_id": 0
+      }
+    );
+    exercises.map((exercise) =>
+        addExercise(
+        {
+          name: exercise.name,
+          reps: parseInt(exercise.reps,10),
+          workout_id: data.id
+        })
+      );
     // Handle form submission (e.g., sending the workout data to an API or storing it)
     console.log({ workoutName, exercises });
   };
@@ -106,7 +90,7 @@ function AddWorkout() {
           ))}
 
           <button type="button" onClick={handleAddExercise}>Add Exercise</button>
-          <button type="submit">Submit Workout</button>
+          <button type="submit" onClick={handleSubmit}>Submit Workout</button>
         </form>
       </div>
     </div>
