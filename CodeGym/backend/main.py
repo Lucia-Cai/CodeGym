@@ -102,7 +102,7 @@ def add_workout_session(session: WorkoutSession):
     )
     return session
 
-@app.get("exercises/{exercise_ID}/sessions", response_model=List[WorkoutSession])
+@app.get("/exercises/{exercise_ID}/sessions", response_model=List[WorkoutSession])
 def get_workout_sessions_for_exercise(exercise_ID: int):
     sessions_list = codegym_db.get_sessions(exercise_ID)
     sessions = []
