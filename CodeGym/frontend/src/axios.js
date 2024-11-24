@@ -77,6 +77,33 @@ export const addExercise = async (exercise) => {
   }
 };
 
+
+
+export const useWorkoutSessions = (exercise_id) => {
+  const [sessions, setSessions] = useState([]);
+
+  useEffect(() => {
+    const fetchSessions = async () => {
+      try {
+        const response = await axios.get(`http://localhost:8000/exercises/${exercise_ID}/sessions`);
+        const transformedSessions = response.data.map((session) => ({
+          date: session.session_date,
+          weight: session.weight,
+          exercise_id: session.exercise_id,
+          session_id: session.session_id
+        }));
+        setSessions(transformedSessions);
+      } catch (error) {
+        console.error("Error fetching workout sessions:", error);
+      }
+    };
+    fetchSessions();
+  }, [exercise_id]);
+
+  return sessions;
+};
+
+
 // Add a new workout session
 export const addWorkoutSession = async (session) => {
   try {
