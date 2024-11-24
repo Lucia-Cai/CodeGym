@@ -1,15 +1,15 @@
 import React from 'react';
-import {ServiceList} from '../helpers/ServiceList';
 import MenuItem from '../components/MenuItem';
 import { useNavigate } from "react-router-dom";
 import '../styles/Menu.css';
-import {BrowserRouter as Router, Route, Routes} from  'react-router-dom';
+import getWorkoutPlans from "../axios.js";
 
 function Menu() {
   const navigate = useNavigate();
   const handleAddWorkoutClick = () => {
     navigate("/addworkout"); 
   };
+  const ServiceList = getWorkoutPlans();
   return (
     <div>
       <div className="menu">
