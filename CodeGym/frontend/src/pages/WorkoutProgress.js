@@ -1,9 +1,12 @@
 import REact from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import '../styles/WorkoutProgress.css';
 
 function WorkoutProgress() {
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const { workout_id } = location.state;
 
   const handleMenuItemClick = () => {
     navigate("/workoutplans");

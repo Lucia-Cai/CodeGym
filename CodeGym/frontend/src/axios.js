@@ -15,6 +15,7 @@ const useWorkoutPlans = () => {
             name: plan.workout_plan_name,
             image: WorkOut,  // or use an actual URL
             description: `Workout plan from ${plan.start_date} to ${plan.end_date}`,
+            workout_id: plan.workout_id
           }));
           setPlans(transformedPlans);
         } catch (error) {

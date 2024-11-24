@@ -10,7 +10,7 @@ function Menu() {
 
   //const handleMenuItemClick = (menuName) => {navigate(`/menu/${menuName}`);};
 
-  const handleMenuTrackProgress = () => {navigate("/workoutprogress")};
+  const handleMenuTrackProgress = (workout_id) => {navigate("/workoutprogress", { state: { workout_id } })};
 
   const handleAddWorkoutClick = () => {
     navigate("/addworkout"); 
@@ -24,7 +24,7 @@ function Menu() {
         <div className="serviceList">
             {ServiceList.map((menuItem, key)=>(
                 //<button key={key} className = "workoutPlanButton" onClick={() => handleMenuItemClick(menuItem.name)}>
-                <button key={key} className = "workoutPlanButton" onClick={handleMenuTrackProgress}>
+                <button key={key} className = "workoutPlanButton" onClick={handleMenuTrackProgress(menuItem.workout_id)}>
                 <MenuItem 
                 key = {key} 
                 image={menuItem.image} 
