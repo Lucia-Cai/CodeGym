@@ -1,0 +1,142 @@
+/* General Layout for the WorkOutPlans Page */
+.workout-plans {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 600px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Page Title */
+  .workout-plans h1 {
+    font-family: "Trebuchet MS", Arial, sans-serif;
+    font-size: 36px;
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  /* Form Styling */
+  form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 20px;
+  }
+  
+  form label {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 5px;
+  }
+  
+  form input {
+    height: 40px;
+    padding: 10px;
+    border: none;
+    border-bottom: 1px solid #121619;
+    font-size: 16px;
+    color: black;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+  
+  form input:focus {
+    outline: none;
+    border-bottom: 2px solid #007BFF;
+  }
+  
+  form button {
+    height: 50px;
+    background-color: #121619;
+    color: whitesmoke;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  form button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Styling for Exercise Rows */
+  .exercise-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .exercise-row h3 {
+    flex: 2;
+    color: #4CAF50;
+    font-size: 18px;
+    margin: 0;
+  }
+  
+  .exercise-row input {
+    flex: 1;
+    height: 40px;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  .exercise-row input:focus {
+    outline: none;
+    border: 1px solid #007BFF;
+  }
+  
+  .exercise-row button {
+    flex: 1;
+    background-color: #121619;
+    color: white;
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .exercise-row button:hover {
+    background-color: #333;
+  }
+  
+  /* Additional Buttons for Adding/Removing */
+  .remove-button {
+    background-color: #dc3545;
+  }
+  
+  .remove-button:hover {
+    background-color: #c82333;
+  }
+  
+  /* Page Responsiveness */
+  @media (max-width: 768px) {
+    .workout-plans {
+      max-width: 100%;
+      padding: 15px;
+    }
+  
+    form input, 
+    .exercise-row input {
+      width: 100%;
+    }
+  
+    .exercise-row {
+      flex-direction: column;
+      gap: 10px;
+    }
+  }
+  

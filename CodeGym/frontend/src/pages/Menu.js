@@ -27,7 +27,7 @@ function Menu() {
                 image={menuItem.image} 
                 name ={menuItem.name} 
                 description ={menuItem.description}/>
-                </button> 
+            </button> 
             ))}
         </div>
         </div>
