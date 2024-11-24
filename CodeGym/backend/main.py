@@ -56,11 +56,12 @@ def get_workout_plans(): # works
 
 @app.post("/workoutplans", response_model=WorkoutPlan)
 def add_workout_plan(workout_plan: WorkoutPlan):
-    codegym_db.add_workout_plan(
+    workout_id = codegym_db.add_workout_plan(
         name=workout_plan.workout_plan_name,
         start_date=workout_plan.start_date,
         end_date=workout_plan.end_date
     )
+    workout_plan.workout_id = workout_id
     return workout_plan
 
 
@@ -83,11 +84,12 @@ def get_exercises(workout_id: int):
 
 @app.post("/exercises", response_model=Exercise)
 def add_exercise(exercise: Exercise):
-    codegym_db.add_exercise(
+    id = codegym_db.add_exercise(
         exercise_name=exercise.name,
         reps=exercise.reps,
         workout_id=exercise.workout_id
     )
+    exercise.exercise_id = id
     return exercise
 
 

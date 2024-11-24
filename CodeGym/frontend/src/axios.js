@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import axiosInstance from "./axiosInstance.js";
 import axios from "axios";
 import WorkOut from "./assets/workout.png"; // Import your image or use a static URL
@@ -13,7 +13,6 @@ export const useWorkoutPlans = () => {
           const response = await axios.get('http://localhost:8000/workoutplans');
           const transformedPlans = response.data.map((plan) => ({
             name: plan.workout_plan_name,
-            workout_id: plan.workout_id,
             image: WorkOut,  // or use an actual URL
             description: `Workout plan from ${plan.start_date} to ${plan.end_date}`,
             workout_id: plan.workout_id
