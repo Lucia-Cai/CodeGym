@@ -21,9 +21,8 @@ function WorkoutProgress() {
       <h1>TESTTTTT</h1>
       <div>
       <div>
-            {exercises.map((exercise, key)=>(
+            {exercises.map((exercise)=>(
                 <MenuItem 
-                key = {key} 
                 name = {exercise.name} 
                 description ={`reps: ${exercise.reps}`}/>
             ))}

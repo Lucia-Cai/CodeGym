@@ -23,7 +23,7 @@ function Menu() {
         <h1 className="serviceTitle">Our services</h1>
         <div className="serviceList">
             {ServiceList.map((menuItem, key)=>(
-                <button key={key} className = "workoutPlanButton" onClick={() => handleMenuTrackProgress(menuItem.name)}>
+                <button key={key} className = "workoutPlanButton" onClick={() => handleMenuTrackProgress(menuItem.workout_id)}>
                 <MenuItem 
                 key = {key} 
                 image={menuItem.image} 

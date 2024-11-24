@@ -12,6 +12,7 @@ export const useWorkoutPlans = () => {
           const response = await axios.get('http://localhost:8000/workoutplans');
           const transformedPlans = response.data.map((plan) => ({
             name: plan.workout_plan_name,
+            workout_id: plan.workout_id,
             image: WorkOut,  // or use an actual URL
             description: `Workout plan from ${plan.start_date} to ${plan.end_date}`,
           }));
@@ -65,7 +66,7 @@ export const useGetExercises = (workout_id) => {
     useEffect(() => {
       const fetchExercises = async () => {
         try {
-          const response = await axios.get(`http://localhost:8000//workoutplans/${workout_id}/exercises`);
+          const response = await axios.get(`http://localhost:8000/workoutplans/${workout_id}/exercises`);
           const transformedExercises = response.data.map((exercise) => ({
             name: exercise.name,
             reps: exercise.reps,
