@@ -4,11 +4,12 @@ import {LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip} from "recharts"
 
 
 
-function ExerciseItem({name, rep, cur_weight, data}) {
+function ExerciseItem({id, name, rep, cur_weight, data}) {
   return (
     <div className = "exerciseItem">
     <div>
         <h1>{name}</h1>
+        <p>{id}</p>
         <p>Reps: {rep}</p>
         <p>Current Weight: {cur_weight}</p>
     </div>
@@ -19,6 +20,8 @@ function ExerciseItem({name, rep, cur_weight, data}) {
             <XAxis dataKey="name" />
             <YAxis />
             <Tooltip />
+            <Line type="monotone" dataKey="pv" stroke="#8884d8" activeDot={{ r: 8 }} />
+            <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
         </LineChart>
     </div>
     </div>
