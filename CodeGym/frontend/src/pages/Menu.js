@@ -14,7 +14,7 @@ function Menu() {
     <div>
       <div className="menu">
         <div className = "leftSide">
-        <hi className="serviceTitle">Our services</hi>
+        <h1 className="serviceTitle">Our services</h1>
         <div className="serviceList">
             {ServiceList.map((menuItem, key)=>{
                 return (
