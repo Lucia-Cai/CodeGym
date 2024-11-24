@@ -71,14 +71,11 @@ const { workout_name, workout_id } = location.state || {}; // Default to an empt
 
   return (
     <div>
-      <div>
+      <div className = "workoutprogress">
+      <div className = "leftSide">
       <h1 className = "workoutTitle">{workout_name}</h1>
-      <div>
       <div className = "workoutList">
             {exercises.map((exercise)=>(
-
-
-
                 <ExerciseItem 
                 id = {exercise.exercise_id}
                 name = {exercise.name} 
@@ -88,6 +85,8 @@ const { workout_name, workout_id } = location.state || {}; // Default to an empt
                 />
             ))}
         </div>
+        </div>
+        <div className = "rightSide">
         <button className="workoutPlanButton1" onClick={handleMenuItemClick}>
           Go to Workout Plans
         </button>
