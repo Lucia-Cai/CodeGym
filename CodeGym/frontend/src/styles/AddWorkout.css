@@ -1,0 +1,89 @@
+/* Add Workout Page Styles */
+.add-workout-form {
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 500px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .add-workout-form h1 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .add-workout-form label {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 10px;
+  }
+  
+  .add-workout-form input,
+  .add-workout-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #333;
+  }
+  
+  .add-workout-form input:focus,
+  .add-workout-form textarea:focus {
+    border-color: #007BFF;
+    outline: none;
+  }
+  
+  .add-workout-form button {
+    padding: 12px 25px;
+    background-color: #007BFF;
+    color: white;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+  }
+  
+  .add-workout-form button:hover {
+    background-color: #0056b3;
+  }
+  
+  .add-workout-form .cancel-button {
+    background-color: #dc3545;
+    margin-top: 10px;
+  }
+  
+  .add-workout-form .cancel-button:hover {
+    background-color: #c82333;
+  }
+  
+  .add-workout-form .form-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  /* Optional: Add some basic page styling for the container */
+  .add-workout-page {
+    background-color: #fafafa;
+    padding: 30px;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .add-workout-page h1 {
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
