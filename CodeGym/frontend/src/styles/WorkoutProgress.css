@@ -1,19 +1,41 @@
 /* General styling for the page */
-body {
+.workoutprogress {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
     margin: 0;
     padding: 0;
   }
   
-  h1 {
+  .workoutprogress h1 {
     font-size: 3rem;
     color: #333;
     margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .exercise-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    place-items : center;
+    /*flex-direction: column; /* Ensures each item is a row */
+    /*align-items: center; /* Center items horizontally */
+    /*gap: 15px; /* Adds spacing between rows */
+    /*margin: 20px 0;*/
+  }
+  
+  /* Styling for each exercise item */
+  .exercise-item {
+    background-color: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 500px; /* Sets a max width for readability */
+    text-align: center;
   }
   
   /* Styling for the button */
-  .workoutPlanButton {
+  .workoutPlanButton1 {
     padding: 10px 20px;
     font-size: 1.2rem;
     color: white;
