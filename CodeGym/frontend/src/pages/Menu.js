@@ -2,7 +2,7 @@ import React from 'react';
 import MenuItem from '../components/MenuItem';
 import { useNavigate } from "react-router-dom";
 import '../styles/Menu.css';
-import getWorkoutPlans from "../axios.js";
+import {useWorkoutPlans} from "../axios.js";
 
 function Menu() {
   const navigate = useNavigate();
@@ -11,10 +11,11 @@ function Menu() {
 
   const handleMenuTrackProgress = (workout_id) => {navigate("/workoutprogress", { state: { workout_id } })};
 
+  //const handleMenuTrackProgress = ()=>{navigate("/workoutprogress")}
   const handleAddWorkoutClick = () => {
     navigate("/addworkout"); 
   };
-  const ServiceList = getWorkoutPlans();
+  const ServiceList = useWorkoutPlans();
   return (
     <div>
       <div className="menu">
@@ -22,8 +23,7 @@ function Menu() {
         <h1 className="serviceTitle">Our services</h1>
         <div className="serviceList">
             {ServiceList.map((menuItem, key)=>(
-                //<button key={key} className = "workoutPlanButton" onClick={() => handleMenuItemClick(menuItem.name)}>
-                <button key={key} className = "workoutPlanButton" onClick={handleMenuTrackProgress(menuItem.workout_id)}>
+                <button key={key} className = "workoutPlanButton" onClick={() => handleMenuTrackProgress(menuItem.workout_id)}>
                 <MenuItem 
                 key = {key} 
                 image={menuItem.image} 

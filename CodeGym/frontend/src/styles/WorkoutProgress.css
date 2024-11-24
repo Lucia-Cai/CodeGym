@@ -6,10 +6,6 @@ body {
     padding: 0;
   }
   
-  /* Style for the main container */
- 
-  
-  /* Styling for the title (h1) */
   h1 {
     font-size: 3rem;
     color: #333;
@@ -20,7 +16,6 @@ body {
   .workoutPlanButton {
     padding: 10px 20px;
     font-size: 1.2rem;
-    background-color: #007bff;
     color: white;
     border: none;
     border-radius: 5px;

@@ -1,7 +1,8 @@
 import React from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import '../styles/WorkoutProgress.css';
-import useGetExercises from "../axios.js";
+import {useGetExercises} from "../axios.js";
+import MenuItem from '../components/MenuItem';
 
 function WorkoutProgress() {
   const navigate = useNavigate();
@@ -19,6 +20,13 @@ function WorkoutProgress() {
     <div>
       <h1>TESTTTTT</h1>
       <div>
+      <div>
+            {exercises.map((exercise)=>(
+                <MenuItem 
+                name = {exercise.name} 
+                description ={`reps: ${exercise.reps}`}/>
+            ))}
+        </div>
         <button className="workoutPlanButton" onClick={handleMenuItemClick}>
           Go to Workout Plans
         </button>
